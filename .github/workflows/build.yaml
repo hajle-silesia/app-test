@@ -1,4 +1,4 @@
-name: Build
+name: CI
 
 on:
   push:
@@ -15,3 +15,13 @@ jobs:
     secrets:
       docker-hub-username: ${{ secrets.DOCKER_USER }}
       docker-hub-token: ${{ secrets.DOCKER_PASSWORD }}
+
+  chart-update:
+    needs:
+      - build
+    name: Chart update
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          echo ${{ github.ref_name }}
