@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    uses: hajle-silesia/.github/.github/workflows/shared-build.yaml@v1.2.0
+    with:
+      docker-hub-repository-name: mtweeman/hajle-silesia_app-test
+    secrets:
+      docker-hub-username: ${{ secrets.DOCKER_USER }}
+      docker-hub-token: ${{ secrets.DOCKER_PASSWORD }}
