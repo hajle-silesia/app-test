@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - "v*.*.*"
-  workflow_dispatch:
 
 jobs:
   build:
@@ -23,5 +22,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: |
-          echo ${{ github.ref_name }}
+      - uses: actions/checkout@v4
+      - run: ls -la
+      - uses: fjogeleit/yaml-update-action@main
+        with:
+          repository: ${{ github.repository }}-config
+          message: "Update image version to ${{ github.ref_name }}"
+          token: ${{ secrets.PUSH_TOKEN }}
+          changes: |
+            {
+              "charts/values.yaml": {
+                "image.repository": "mtweeman/hajle-silesia_app-test"
+              },
+              "charts/values.yaml": {
+                "image.tag": "${{ github.ref_name }}"
+              }
+            }
+      - run: ls -la
