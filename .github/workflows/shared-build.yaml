@@ -28,6 +28,9 @@ on:
       json:
         description: JSON
         value: ${{ jobs.shared-build.outputs.json }}
+      tags:
+        description: Tags
+        value: ${{ jobs.shared-build.outputs.tags }}
 
 permissions:
   contents: read
@@ -40,6 +43,7 @@ jobs:
       docker-hub-repository-name: ${{ fromJSON(steps.meta.outputs.json).args['DOCKER_META_IMAGES'] }}
       image-tag: ${{ fromJSON(steps.meta.outputs.json).args['DOCKER_META_VERSION'] }}
       json: ${{ steps.meta.outputs.json }}
+      tags: ${{ steps.meta.outputs.tags }}
 
     steps:
       - name: Checkout
