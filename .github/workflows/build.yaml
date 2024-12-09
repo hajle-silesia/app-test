@@ -39,6 +39,6 @@ jobs:
                 "image.tag": "${{ needs.build.outputs.image-tag }}"
               },
               "charts/Chart.yaml": {
-                "appVersion": "${{ needs.build.outputs.image-tag }}"
+                "appVersion": "'${{ needs.build.outputs.image-tag }}'"
               }
             }
