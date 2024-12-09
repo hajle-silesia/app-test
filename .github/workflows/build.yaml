@@ -22,6 +22,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: |
+          echo "${{ github.needs.build.outputs.docker-hub-repository-name }}"
+          echo "${{ github.needs.build.outputs.image-tag }}"
       - uses: actions/checkout@v4
         with:
           repository: ${{ github.repository }}-config
