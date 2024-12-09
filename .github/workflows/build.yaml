@@ -23,12 +23,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: ls -la
+        with:
+          repository: ${{ github.repository }}-config
+          path: ${{ github.event.repository.name }}-config
+      - run: |
+          ls -la
       - uses: fjogeleit/yaml-update-action@main
         with:
           repository: ${{ github.repository }}-config
           message: "Update image version to ${{ github.ref_name }}"
           token: ${{ secrets.PUSH_TOKEN }}
+          workDir: ${{ github.event.repository.name }}-config
           changes: |
             {
               "charts/values.yaml": {
