@@ -31,7 +31,7 @@ jobs:
     name: Shared build
     runs-on: ubuntu-latest
     outputs:
-      docker-hub-repository-name: ${{ steps.meta.outputs.json }}
+      docker-hub-repository-name: ${{ steps.meta.outputs.version }}
 
     steps:
       - name: Checkout
