@@ -29,6 +29,7 @@ jobs:
     outputs:
       docker-hub-repository-name: ${{ fromJSON(steps.meta.outputs.json).args['DOCKER_META_IMAGES'] }}
       image-tag: ${{ fromJSON(steps.meta.outputs.json).args['DOCKER_META_VERSION'] }}
+      json: ${{ steps.meta.outputs.json }}
 
     steps:
       - name: Checkout
