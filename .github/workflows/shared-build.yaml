@@ -34,7 +34,7 @@ jobs:
     name: Shared build
     runs-on: ubuntu-latest
     outputs:
-      docker-hub-repository-name: ${ inputs.docker-hub-repository-name }
+      docker-hub-repository-name: ${{ inputs.docker-hub-repository-name }}
       image-tag: ${{ steps.meta.outputs.version }}
 
     steps:
