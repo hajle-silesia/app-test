@@ -23,6 +23,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}-config
       - run: |
           pwd
           ls -la
