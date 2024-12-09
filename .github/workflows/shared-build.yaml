@@ -31,7 +31,7 @@ jobs:
     name: Shared build
     runs-on: ubuntu-latest
     outputs:
-      docker-hub-repository-name: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
+      docker-hub-repository-name: ${{ fromJSON(steps.meta.outputs.json).args['DOCKER_META_IMAGES'] }}
 
     steps:
       - name: Checkout
