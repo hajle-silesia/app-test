@@ -42,3 +42,4 @@ jobs:
                 "appVersion": "${{ needs.build.outputs.image-tag }}"
               }
             }
+
