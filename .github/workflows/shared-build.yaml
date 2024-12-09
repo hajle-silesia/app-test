@@ -22,6 +22,9 @@ on:
       docker-hub-repository-name:
         description: Docker Hub repository name
         value: ${{ jobs.shared-build.outputs.docker-hub-repository-name }}
+      image-tag:
+        description: Image tag
+        value: ${{ jobs.shared-build.outputs.image-tag }}
 
 permissions:
   contents: read
@@ -31,7 +34,8 @@ jobs:
     name: Shared build
     runs-on: ubuntu-latest
     outputs:
-      docker-hub-repository-name: ${{ steps.meta.outputs.version }}
+      docker-hub-repository-name: ${{ inputs.docker-hub-repository-name }}
+      image-tag: ${{ steps.meta.outputs.version }}
 
     steps:
       - name: Checkout
