@@ -28,18 +28,17 @@ jobs:
       - uses: fjogeleit/yaml-update-action@main
         with:
           repository: ${{ github.repository }}-config
-          message: "Update image version to ${{ github.ref_name }}"
+          message: ${{ github.event.head_commit.message }}
           token: ${{ secrets.PUSH_TOKEN }}
           changes: |
             {
-              "charts/values.yaml": {
+              "charts/${{ github.event.repository.name }}/values.yaml": {
                 "image.repository": "${{ needs.build.outputs.docker-hub-repository-name }}"
               },
-              "charts/values.yaml": {
+              "charts/${{ github.event.repository.name }}/values.yaml": {
                 "image.tag": "${{ needs.build.outputs.image-tag }}"
               },
-              "charts/Chart.yaml": {
+              "charts/${{ github.event.repository.name }}/Chart.yaml": {
                 "appVersion": "${{ needs.build.outputs.image-tag }}"
               }
             }
-
