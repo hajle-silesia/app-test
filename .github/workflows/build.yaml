@@ -25,6 +25,7 @@ jobs:
       - run: |
           echo "${{ needs.build.outputs.docker-hub-repository-name }}"
           echo "${{ needs.build.outputs.image-tag }}"
+          echo "${{ needs.build.outputs.json }}"
       - uses: actions/checkout@v4
         with:
           repository: ${{ github.repository }}-config
