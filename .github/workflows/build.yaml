@@ -44,4 +44,3 @@ jobs:
                 "image.tag": "${{ github.ref_name }}"
               }
             }
-          quotingType: "
