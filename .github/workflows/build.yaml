@@ -29,6 +29,9 @@ jobs:
       - run: |
           pwd
           ls -la
+          cd ..
+          pwd
+          ls -la
       - uses: fjogeleit/yaml-update-action@main
         with:
           repository: ${{ github.repository }}-config
