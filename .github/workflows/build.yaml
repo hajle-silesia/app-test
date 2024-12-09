@@ -27,6 +27,7 @@ jobs:
           repository: ${{ github.repository }}-config
           path: ${{ github.event.repository.name }}-config
       - run: |
+          pwd
           ls -la
       - uses: fjogeleit/yaml-update-action@main
         with:
@@ -43,4 +44,4 @@ jobs:
                 "image.tag": "${{ github.ref_name }}"
               }
             }
-      - run: ls -la
+          quotingType: "
