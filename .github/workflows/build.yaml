@@ -22,9 +22,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: |
-          echo ${{ needs.build.outputs.docker-hub-repository-name }}
-          echo ${{ needs.build.outputs.image-tag }}
       - uses: actions/checkout@v4
         with:
           repository: ${{ github.repository }}-config
@@ -36,9 +33,12 @@ jobs:
           changes: |
             {
               "charts/values.yaml": {
-                "image.repository": "mtweeman/hajle-silesia_app-test"
+                "image.repository": "${{ needs.build.outputs.docker-hub-repository-name }}"
               },
               "charts/values.yaml": {
-                "image.tag": "${{ github.ref_name }}"
+                "image.tag": "${{ needs.build.outputs.image-tag }}"
+              },
+              "charts/Chart.yaml": {
+                "appVersion": ""${{ needs.build.outputs.image-tag }}""
               }
             }
