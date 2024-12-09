@@ -18,6 +18,16 @@ on:
       docker-hub-token:
         description: Docker Hub token
         required: true
+    outputs:
+      docker-hub-repository-name:
+        description: Docker Hub repository name
+        value: ${{ jobs.shared-build.outputs.docker-hub-repository-name }}
+      image-tag:
+        description: Image tag
+        value: ${{ jobs.shared-build.outputs.image-tag }}
+      json:
+        description: JSON
+        value: ${{ jobs.shared-build.outputs.json }}
 
 permissions:
   contents: read
