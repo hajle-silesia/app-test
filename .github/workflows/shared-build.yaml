@@ -22,15 +22,6 @@ on:
       docker-hub-repository-name:
         description: Docker Hub repository name
         value: ${{ jobs.shared-build.outputs.docker-hub-repository-name }}
-      image-tag:
-        description: Image tag
-        value: ${{ jobs.shared-build.outputs.image-tag }}
-      json:
-        description: JSON
-        value: ${{ jobs.shared-build.outputs.json }}
-      tags:
-        description: Tags
-        value: ${{ jobs.shared-build.outputs.tags }}
 
 permissions:
   contents: read
