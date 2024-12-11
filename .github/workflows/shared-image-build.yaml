@@ -11,7 +11,7 @@ on:
         description: Docker Hub namespace
         type: string
         required: true
-      dockerfile-dir:
+      dir:
         description: Directory containing Dockerfile
         type: string
         required: false
