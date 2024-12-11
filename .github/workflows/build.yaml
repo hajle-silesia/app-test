@@ -10,10 +10,10 @@ jobs:
     name: Build
     uses: hajle-silesia/app-test/.github/workflows/shared-build.yaml@master
     with:
-      docker-hub-repository-name: mtweeman/hajle-silesia_app-test
+      docker-hub-username: ${{ vars.DOCKER_HUB_USERNAME }}
+      docker-hub-namespace: ${{ vars.DOCKER_HUB_NAMESPACE }}
     secrets:
-      docker-hub-username: ${{ secrets.DOCKER_USER }}
-      docker-hub-token: ${{ secrets.DOCKER_PASSWORD }}
+      docker-hub-token: ${{ secrets.DOCKER_HUB_TOKEN }}
 
   chart-update:
     needs:
@@ -36,9 +36,9 @@ jobs:
                 "image.repository": "${{ needs.build.outputs.docker-hub-repository-name }}"
               },
               "charts/${{ github.event.repository.name }}/values.yaml": {
-                "image.tag": "${{ needs.build.outputs.image-tag }}"
+                "image.tag": "${{ needs.build.outputs.tag }}"
               },
               "charts/${{ github.event.repository.name }}/Chart.yaml": {
-                "appVersion": "${{ needs.build.outputs.image-tag }}"
+                "appVersion": "${{ needs.build.outputs.tag }}"
               }
             }
