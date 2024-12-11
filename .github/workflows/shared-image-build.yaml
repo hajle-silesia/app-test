@@ -22,7 +22,7 @@ on:
     outputs:
       docker-hub-repository-name:
         description: Docker Hub repository name
-        value: ${{ docker-hub-repository-name }}
+        value: $docker-hub-repository-name
       tag:
         description: Image tag
         value: ${{ jobs.shared-image-build.outputs.tag }}
