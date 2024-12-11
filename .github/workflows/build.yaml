@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build
-    uses: hajle-silesia/app-test/.github/workflows/shared-build.yaml@master
+    uses: hajle-silesia/app-test/.github/workflows/shared-image-build.yaml@master
     with:
       docker-hub-username: ${{ vars.DOCKER_HUB_USERNAME }}
       docker-hub-namespace: ${{ vars.DOCKER_HUB_NAMESPACE }}
